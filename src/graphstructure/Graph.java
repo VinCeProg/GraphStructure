@@ -14,7 +14,16 @@ public class Graph {
     this.edges = new ArrayList<>();
     this.isDirected = isDirected;
   }
-
+  
+  public Vertex getVertex(String label) {
+    for (Vertex vertex : vertices) {
+      if (vertex.getLabel().equals(label)) {
+        return vertex;
+      }
+    }
+    return null;
+  }
+  
   public void addVertex(String label) {
     if (getVertex(label) == null) {
       vertices.add(new Vertex(label));
@@ -48,14 +57,5 @@ public class Graph {
       }
       System.out.println();
     }
-  }
-
-  public Vertex getVertex(String label) {
-    for (Vertex vertex : vertices) {
-      if (vertex.getLabel().equals(label)) {
-        return vertex;
-      }
-    }
-    return null;
   }
 }
