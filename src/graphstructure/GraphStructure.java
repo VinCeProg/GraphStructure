@@ -3,24 +3,23 @@ package graphstructure;
 public class GraphStructure {
 
   public static void main(String[] args) {
-    Graph undirectedGraph = new Graph();
     
-    Vertex v1 = new Vertex("A");
-    Vertex v2 = new Vertex("B");
-    Vertex v3 = new Vertex("C");
-    Vertex v4 = new Vertex("D");
+    //Creates instance
+    Graph graph = new Graph(false);
     
-    undirectedGraph.addVertex(v1);
-    undirectedGraph.addVertex(v2);
-    undirectedGraph.addVertex(v3);
-    undirectedGraph.addVertex(v4);
+    //Creates vertices
+    graph.addVertex("A");
+    graph.addVertex("B");
+    graph.addVertex("C");
+    graph.addVertex("D");
     
-    undirectedGraph.addDirectedEdge(v1, v2, 5);
-    undirectedGraph.addDirectedEdge(v1, v3, 5);
-    undirectedGraph.addDirectedEdge(v3, v4, 5);
+    //Creates edges
+    graph.addEdge("A", "B", 5);
+    graph.addEdge("A", "C", null);
+    graph.addEdge("B", "D", 10);
     
-    System.out.println("Directed Graph");
-    undirectedGraph.printAdjacencyList();
+    System.out.println("Graph Adjacency List");
+    graph.printAdjacencyList();
   }
   
 }

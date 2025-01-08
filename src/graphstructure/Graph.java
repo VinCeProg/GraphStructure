@@ -26,7 +26,7 @@ public class Graph {
     Vertex end = getVertex(v2);
 
     if (start == null || end == null) {
-      System.out.println("Error! Vertex not in the graph!");
+      throw new IllegalArgumentException("Vertex not Found.");
     }
 
     Edge edge = new Edge(start, end, weight);
@@ -42,9 +42,9 @@ public class Graph {
 
   public void printAdjacencyList() {
     for (Vertex vertex : vertices) {
-      System.out.print(vertex + " -> ");
+      System.out.print(vertex + " = ");
       for (Edge edge : vertex.getAdjacent_edges()) {
-        System.out.print(edge + " ");
+        System.out.print(edge + "  ");
       }
       System.out.println();
     }

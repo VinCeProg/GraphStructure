@@ -14,7 +14,7 @@ public class Edge {
     this.isWeighted = (weight != null);
   }
 
-  public boolean isIsWeighted() {
+  public boolean isWeighted() {
     return isWeighted;
   }
 
@@ -33,7 +33,7 @@ public class Edge {
   @Override
   public String toString() {
     if (isWeighted) {
-      return start + " --(" + weight + ")--> " + end;
+      return start + " -(" + weight + ")-> " + end;
     } else {
       return start + " --> " + end;
     }
