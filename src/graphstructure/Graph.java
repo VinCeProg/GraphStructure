@@ -43,7 +43,7 @@ public class Graph {
   public void printAdjacencyList() {
     for (Vertex vertex : vertices) {
       System.out.print(vertex + " = ");
-      for (Edge edge : vertex.getAdjacent_edges()) {
+      for (Edge edge : vertex.getAdjacentEdges()) {
         System.out.print(edge + "  ");
       }
       System.out.println();

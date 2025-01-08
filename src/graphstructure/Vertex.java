@@ -6,23 +6,23 @@ import java.util.List;
 public class Vertex {
 
   private String label;
-  private List<Edge> adjacent_edges;
+  private List<Edge> adjacentEdges;
 
   public Vertex(String label) {
     this.label = label;
-    this.adjacent_edges = new ArrayList<>();
+    this.adjacentEdges = new ArrayList<>();
   }
 
   public String getLabel() {
     return label;
   }
 
-  public List<Edge> getAdjacent_edges() {
-    return adjacent_edges;
+  public List<Edge> getAdjacentEdges() {
+    return adjacentEdges;
   }
 
   public void addEdge(Edge edge) {
-    adjacent_edges.add(edge);
+    adjacentEdges.add(edge);
   }
 
   @Override
