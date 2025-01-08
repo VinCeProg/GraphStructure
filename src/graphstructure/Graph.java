@@ -4,46 +4,58 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Graph {
+
   private List<Vertex> vertices;
   private List<Edge> edges;
   private boolean isDirected;
-  
-  public Graph(){
+
+  public Graph(boolean isDirected) {
     this.vertices = new ArrayList<>();
     this.edges = new ArrayList<>();
+    this.isDirected = isDirected;
   }
-  
-  public void addVertex(Vertex vertex){
-    vertices.add(vertex);
+
+  public void addVertex(String label) {
+    if (getVertex(label) == null) {
+      vertices.add(new Vertex(label));
+    }
   }
-  
-  public void addEdge(Vertex v1, Vertex v2, Integer weight, boolean isDirected){
-    Edge edge = new Edge(v1, v2, weight);
-  }
-  
-  public void addDirectedEdge(Vertex start, Vertex end, Integer weight){
+
+  public void addEdge(String v1, String v2, Integer weight) {
+    Vertex start = getVertex(v1);
+    Vertex end = getVertex(v2);
+
+    if (start == null || end == null) {
+      System.out.println("Error! Vertex not in the graph!");
+    }
+
     Edge edge = new Edge(start, end, weight);
     edges.add(edge);
     start.addEdge(edge);
-    isDirected = true;
+
+    if (!isDirected) {
+      Edge revEdge = new Edge(end, start, weight);
+      edges.add(revEdge);
+      end.addEdge(revEdge);
+    }
   }
-  
-  public void addUndirectedEdge(Vertex v1, Vertex v2, Integer weight){
-    Edge edge1 = new Edge(v1, v2, weight);
-    Edge edge2 = new Edge(v2, v1, weight);
-    edges.add(edge1);
-    edges.add(edge2);
-    v1.addEdge(edge1);
-    v2.addEdge(edge2);
-  }
-  
-  public void printAdjacencyList(){
-    for (Vertex vertex : vertices){
+
+  public void printAdjacencyList() {
+    for (Vertex vertex : vertices) {
       System.out.print(vertex + " -> ");
-      for (Edge edge : vertex.getAdjacent_edges()){
+      for (Edge edge : vertex.getAdjacent_edges()) {
         System.out.print(edge + " ");
       }
       System.out.println();
     }
+  }
+
+  public Vertex getVertex(String label) {
+    for (Vertex vertex : vertices) {
+      if (vertex.getLabel().equals(label)) {
+        return vertex;
+      }
+    }
+    return null;
   }
 }
