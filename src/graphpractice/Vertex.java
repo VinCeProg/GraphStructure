@@ -1,10 +1,11 @@
 package graphpractice;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Vertex {
   private String label;
-  private ArrayList<Edge> adjacentEdges;
+  private List<Edge> adjacentEdges;
 
   public Vertex(String label) {
     this.label = label;
@@ -15,7 +16,7 @@ public class Vertex {
     return label;
   }
 
-  public ArrayList<Edge> getAdjacentEdges() {
+  public List<Edge> getAdjacentEdges() {
     return adjacentEdges;
   }
   
